@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Página Responsive con Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        /*
+        function cambiarBoton2(){
+            
+            getElementById // trae el elemento por id
+            getElementsByClassName //trae los elemtnos por clase
+            getElementByName //por el nombre del elemtno
+            querySelector // utiliza el selector cd css y trae el primero
+            querySelectorAll // utiliza el selector cd css y los trae todos
+        
+            Ejemplos:
+                const elemento = document.getElementById('btn-2');
+                elemento.innerText = 'Enviar Formulario';
+                elemento.removeAttribute('class');
+                elemento.setAttribute('class','btn btn-success');
+
+                document.getElementById('parrafo1').style.color = 'green';
+
+                const imagen = document.querySelector('#card2 img');
+                imagen.setAttribute('src','https://picsum.photos/200');
+
+                const cards = document.getElementsByClassName('card');
+                console.log(cards.length);
+        }*/
+        window.addEventListener('DOMContentLoaded',function(){ //utilizar para confirmar que el dom esta cargado
+            document.getElementById('btnChange').addEventListener('mouseover', function() {
+                const elemento = document.getElementById('btn-2');
+                elemento.innerText = 'Enviar Formulario';
+                elemento.removeAttribute('class');
+                elemento.setAttribute('class','btn btn-success');
+            });
+            document.getElementById('btnChange').addEventListener('mouseout', function() {
+                const elemento = document.getElementById('btn-2');
+                elemento.innerText = 'Leer más';
+                elemento.removeAttribute('class');
+                elemento.setAttribute('class','btn btn-warning');
+            });
+
+            document.querySelector('#card2 img').addEventListener('mouseover',function(){
+                this.setAttribute('src','https://picsum.photos/400');
+            });
+
+            document.querySelector('#card2 img').addEventListener('mouseout',function(){
+                this.setAttribute('src','https://placehold.co/400');
+            });
+            /**
+                click -> Ocurre cuando un elemento es clickeado.
+                dblclick -> Ocurre cuando un elemento es doble clickeado.
+                mouseover ->  Ocurre cuando el puntero del ratón se coloca sobre un elemento.
+                mouseout ->  Ocurre cuando el puntero del ratón se aleja de un elemento.
+                keydown  ->  Ocurre cuando una tecla es presionada.
+                keyup -> Ocurre cuando una tecla es liberada.
+                change ->  Ocurre cuando el valor de un elemento de formulario cambia.
+                submit ->  Ocurre cuando un formulario es enviado.
+                focus ->  Ocurre cuando un elemento gana el foco.
+                blur -> Ocurre cuando un elemento pierde el foco.
+                input ->  Ocurre cuando un valor de entrada es modificado.    
+            */
+        })
+             
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            ariacontrols="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(actual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Características</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contactus.html">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://placehold.co/400" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Tarjeta 1</h5>
+                        <p id="parrafo1" class="card-text">Descripción breve de la tarjeta 1.</p>
+                        <a href="#" id="btnChange" class="btn btn-primary">Cambiar Boton 2</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" id="card2">
+                    <img src="https://placehold.co/400" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Tarjeta 2</h5>
+                        <p class="card-text">Descripción breve de la tarjeta 2.</p>
+                        <a href="#" id="btn-2" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://placehold.co/400" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Tarjeta 3</h5>
+                        <p class="card-text">Descripción breve de la tarjeta 3.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
