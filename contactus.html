@@ -5,32 +5,60 @@
     <title>Página Responsive con Bootstrap</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script>
-        
         window.addEventListener('DOMContentLoaded',function(){ //utilizar para confirmar que el dom esta cargado
+            /*function esEmailValido(email) {
+                let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return regex.test(email);
+            }*/
+            const esEmailValido = (email) => {
+                let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return regex.test(email);
+            }
+            const nombreVacio = (nombre) => {
+                return nombre.trim() === '';
+            }
             document.getElementById('miFormulario').addEventListener('submit', function(event) {
+                let divErrores = document.getElementById('errores');
+                //limpiar los errores
+                divErrores.innerHTML='';
                 let errores = [];
+                console.log('cantidad de elementos al principio :',errores.length);
                 let nombre = document.getElementById('nombre').value;
                 let email = document.getElementById('email').value;
                 let comuna = document.getElementById('comuna').value;
                 let comentario = document.getElementById('comentario').value;
-                if (nombre === '') {
-                    alert("El nombre está vacio");
-                    event.preventDefault();
-                    //errores.push('El campo nombre es obligatorio.');
-                }
-                /*
-                if (email === '') {
-                    //errores.push('El campo email es obligatorio.');
+                if (nombreVacio(nombre)) {
+                    errores.push('El campo nombre es obligatorio.');
                 }
                 
-                if (edad === '') {
-                    //errores.push('El campo edad es obligatorio.');
+                
+                if (email === '') {
+                    errores.push('El campo email es obligatorio.');
+                }else{
+                    if(!esEmailValido(email)){
+                        errores.push('El email ingresado es inválido');
+                    }
                 }
+                
+                if (comuna === '') {
+                    errores.push('El campo comuna es obligatorio.');
+                }
+
+                if (comentario === '') {
+                    errores.push('El campo comentario es obligatorio.');
+                }
+                
                 
                 if (errores.length > 0) {
+                    console.log('nueva cantidad de elementos:',errores.length);
+                    console.log(errores);
                     event.preventDefault();
-                    //document.getElementById('errores').innerHTML = errores.join('<br>');
-                }*/
+                    divErrores.setAttribute('class','alert alert-danger');
+                    divErrores.innerHTML = errores.join('<br>');
+
+                }else{
+                    alert('Enviando formulario...');
+                }
                    
             })
         })
@@ -51,10 +79,10 @@
                     <a class="nav-link" href="index.html">Inicio <span class="sr-only">(actual)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Características</a>
+                    <a class="nav-link" href="objects.html">Objetos</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Contacto</a>
+                    <a class="nav-link" href="contactus.html">Contacto</a>
                 </li>
             </ul>
         </div>
@@ -93,6 +121,7 @@
                         <button type="submit" class="btn btn-success"> Enviar Contacto</button>
                     </div>
                   </form>
+                  <div id="errores"></div>
             </div>
         </div>
         
